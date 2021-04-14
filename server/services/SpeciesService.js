@@ -7,7 +7,7 @@ class SpeciesService {
   }
 
   async findOne(id) {
-    let data = await (await dbContext.species.findOne({ _id: id }))
+    let data = await dbContext.species.findOne({ _id: id })
     if (!data) {
       throw new BadRequest("Invalid Id")
     }

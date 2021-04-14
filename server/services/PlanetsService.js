@@ -7,7 +7,7 @@ class PlanetsService {
   }
 
   async findOne(id) {
-    let data = await (await dbContext.planets.findOne({ _id: id }))
+    let data = await dbContext.planets.findOne({ _id: id })
     if (!data) {
       throw new BadRequest("Invalid Id")
     }

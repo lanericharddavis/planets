@@ -7,7 +7,7 @@ class MoonsService {
   }
 
   async findOne(id) {
-    let data = await (await dbContext.moons.findOne({ _id: id }))
+    let data = await dbContext.moons.findOne({ _id: id })
     if (!data) {
       throw new BadRequest("Invalid Id")
     }
