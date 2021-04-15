@@ -4,10 +4,13 @@ import { dbContext } from "../db/DbContext";
 class SpeciesService {
   async find(query = {}) {
     return await dbContext.species.find(query)
+      .populate('galaxy', 'name')
+      .populate('star', 'name')
+      .populate('planet', 'name')
   }
 
   async findOne(id) {
-    let data = await dbContext.species.findOne({ _id: id })
+    let data = await dbContext.species.findOne({ _id: id }).populate('planet')
     if (!data) {
       throw new BadRequest("Invalid Id")
     }
